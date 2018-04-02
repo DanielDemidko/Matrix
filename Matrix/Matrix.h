@@ -11,15 +11,15 @@ template<typename T> std::ostream &operator<<(std::ostream &out, const std::vect
 }
 
 
-// Класс представляет собой матрицу. Индексация ведётся с единицы
-/// Согласно ТЗ реализованно три пункта: 1 - вывод, 2 - транспонирование, 3 - умножение на матрицу
+// РљР»Р°СЃСЃ РїСЂРµРґСЃС‚Р°РІР»СЏРµС‚ СЃРѕР±РѕР№ РјР°С‚СЂРёС†Сѓ. РРЅРґРµРєСЃР°С†РёСЏ РІРµРґС‘С‚СЃСЏ СЃ РµРґРёРЅРёС†С‹
+/// РЎРѕРіР»Р°СЃРЅРѕ РўР— СЂРµР°Р»РёР·РѕРІР°РЅРЅРѕ С‚СЂРё РїСѓРЅРєС‚Р°: 1 - РІС‹РІРѕРґ, 2 - С‚СЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРёРµ, 3 - СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РјР°С‚СЂРёС†Сѓ
 template<typename T> class Matrix
 {
 private:
     std::vector<std::vector<T>> Table;
 
 public:
-    /// Реализуем вывод согласно ТЗ(1)
+    /// Р РµР°Р»РёР·СѓРµРј РІС‹РІРѕРґ СЃРѕРіР»Р°СЃРЅРѕ РўР—(1)
     friend std::ostream& operator<<(std::ostream &out, const Matrix &self)
     {
         for (const auto &vec : self.Table)
@@ -51,19 +51,19 @@ public:
         return Table[m - 1][n - 1];
     }
 
-    // Число столбцов
+    // Р§РёСЃР»Рѕ СЃС‚РѕР»Р±С†РѕРІ
     size_t Columns() const
     {
         return Table.empty() ? 0 : Table.front().size();
     }
 
-    // Число строк
+    // Р§РёСЃР»Рѕ СЃС‚СЂРѕРє
     size_t Rows() const
     {
         return Table.size();
     }
 
-    /// Реализуем транспонирование согласно ТЗ(2)
+    /// Р РµР°Р»РёР·СѓРµРј С‚СЂР°РЅСЃРїРѕРЅРёСЂРѕРІР°РЅРёРµ СЃРѕРіР»Р°СЃРЅРѕ РўР—(2)
     Matrix Transpose() const
     {
         Matrix result(Columns(), Rows());
@@ -103,7 +103,7 @@ template<typename T> T Sum(const size_t i, const size_t j, const Matrix<T> &a, c
 }
 
 
-/// Реализуем умножение на другую матрицу согласно ТЗ(3)
+/// Р РµР°Р»РёР·СѓРµРј СѓРјРЅРѕР¶РµРЅРёРµ РЅР° РґСЂСѓРіСѓСЋ РјР°С‚СЂРёС†Сѓ СЃРѕРіР»Р°СЃРЅРѕ РўР—(3)
 template<typename T> Matrix<T> operator*(const Matrix<T> &a, const Matrix<T> &b)
 {
     if (a.Columns() != b.Rows())
